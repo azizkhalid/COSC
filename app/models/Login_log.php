@@ -11,7 +11,7 @@ class Login_log {
     }
 
     public function add($name, $type='') {
-         $da=date("d-m-Y");
+         $da=date("Y-m-d");
 		$pdo = db_connect();
         //Check if entry exists within last 60 seconds
         $sql = 'INSERT INTO login_log(id, username, type, time, date) VALUES(?, ?, ?, ?, ?)';

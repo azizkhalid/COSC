@@ -10,7 +10,7 @@
 
 
 
- $da=date("d-m-y");
+ $da=date("Y-m-d");
 
 
     $sql = "SELECT COUNT(time) from login_log where time='".$da."'" ;

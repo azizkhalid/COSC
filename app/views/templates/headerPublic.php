@@ -27,7 +27,15 @@ if (isset($_SESSION['auth']) == 1) {
 <body>
 <div class="login">
 <div align="center">
-<p>public header<img src="../../../public/images/logo1.png"  style="margin-left:10; margin-top:5px; width:250px; height:100px" /></p>
+<?php 
+$con = mysqli_connect("localhost","root","","cosc");
+
+$sql="select * from header";
+$query=mysqli_query($con,$sql);
+$row=mysqli_fetch_array($query);
+?>
+
+<p><img src="../public/images/<?php echo $row['file'];?>"  style="margin-left:10; margin-top:5px; width:250px; height:100px" /></p>
                 </div>
       
  <br />

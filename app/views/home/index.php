@@ -17,7 +17,14 @@
             </div>
         </div>
     </div>
+<?php
 
+/* print_R($_SESSION);
+die;
+ */
+
+
+?>
     <div class="row">
         <div class="col-lg-12">
             <p> We Welcome <?=$data['message']?> </p>

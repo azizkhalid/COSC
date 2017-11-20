@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 if (isset($_SESSION['auth']) != 1) {
     header('Location: /home');
 }
@@ -34,6 +35,38 @@ if (isset($_SESSION['auth']) != 1) {
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo base_url('home'); ?>" class="scroll">Home</a></li>
+				
+				
+				<?php
+				
+				$username123=$_SESSION['username'];
+				
+				if($username123=="admin")
+				{	
+				
+				?>
+				
+				
+				 <li><a href="users" class="scroll">User</a></li>
+				 <!-- <li><a href="report" class="scroll">Report</a></li>-->
+				  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Report <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <ul style="list-style:none">
+        <li>  <a class="dropdown-item" href="report">Login Report</a></li>
+        <li>   <a class="dropdown-item" href="register">Register Report</a></li>
+       
+          </ul>
+        </div>
+      </li>
+	  
+				   <li><a href="header" class="scroll">Header</a></li>
+				
+				
+				<?php  } ?> 
+				
                  <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Remainder <span class="caret"></span>

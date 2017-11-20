@@ -33,10 +33,30 @@ class User {
         $query->execute(array($name, $pwd));
         
         if ( $query->rowCount() >= 1 )
-            return 1;
+        {    
+		return 1;
+        }
+		else
+		{	
         
-        return 0;
-    }
+		  $sql = "SELECT username, password FROM admin WHERE username = ? AND password = ?";
+        $query = $pdo->prepare($sql);
+        $query->execute(array($name, $pwd));
+		 if ( $query->rowCount() >= 1 )
+        {    
+		return 1;
+        }
+		else
+		{
+		
+		return 0;
+		}
+		
+		
+		}
+	
+	
+	}
 
     public function checkAttemptCountInLastMinute($name='') {
         $curr_time = date();
@@ -73,11 +93,11 @@ class User {
 		$pdo = db_connect();
         if (! $this->checkUserExist($username) )
             return false;
-
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+$date=date("Y-m-d");
+        $sql = "INSERT INTO users (username, password, date) VALUES (?, ?, ?)";
         $query = $pdo->prepare($sql);
         $pwd = md5($password);
-        $query->execute(array($username, $pwd));
+        $query->execute(array($username, $pwd ,$date));
         
         return true;        
 

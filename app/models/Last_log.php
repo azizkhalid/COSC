@@ -28,7 +28,7 @@
 	}
 	
 	else{
-	$abc= date("d-m-Y"); 
+	$abc= date("Y-m-d"); 
 	
     }
 
