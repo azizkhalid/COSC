@@ -34,6 +34,10 @@
                         </tr>
                     </thead>
                     <tbody>
+					
+					
+					
+					
                         <?php if (count($data['reminders']) == 0){ ?>
                             <tr><td colspan="5">No reminders to display</td></tr>
                         <?php  } else { ?>
@@ -131,7 +135,7 @@
             var parent = $(btn).parents('tr.data-row');
             // console.log(parent)
             var curr_id = parent.find('td[data-id]').data('id');
-            var modal = $(this);
+	var modal = $(this);
             modal.find('a.delete-btn').attr('href', '<?php echo base_url('reminders/delete'); ?>/'+ curr_id);
         })
 

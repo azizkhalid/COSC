@@ -13,7 +13,7 @@ define('CONTROLLERS', ROOT . DS . 'controllers');
 define('LOGS', ROOT . DS . 'logs');	
 define('FILES', ROOT . DS. 'files');
 
-define('BASE_URL', 'http://localhost');
+define('BASE_URL', 'http://localhost/');
 
 // ---------------------  NEW FENIX DATABASE TABLE -------------------------
 define('DB_HOST',         '127.0.0.1');

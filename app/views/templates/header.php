@@ -67,6 +67,8 @@ if (isset($_SESSION['auth']) != 1) {
 				
 				<?php  } ?> 
 				
+				
+		
                  <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Remainder <span class="caret"></span>
@@ -79,6 +81,11 @@ if (isset($_SESSION['auth']) != 1) {
           </ul>
         </div>
       </li>
+	  
+	  
+	  
+	  
+	   <li><a href="<?php echo base_url('profile/index'); ?>" class="scroll"><i class="fa fa-user"></i> Profile</a></li>
                 
                 <li><a href="<?php echo base_url('home/logout'); ?>" class="scroll"><i class="fa fa-sign-out"></i> Logout</a></li>
               </ul>

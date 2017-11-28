@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2017 at 09:58 AM
+-- Generation Time: Nov 25, 2017 at 12:52 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `login_log` (
   `type` enum('success','error','logout') DEFAULT NULL,
   `time` bigint(30) NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,23 @@ CREATE TABLE IF NOT EXISTS `notes` (
   `created_date` bigint(20) NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '1',
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personaldetails`
+--
+
+CREATE TABLE IF NOT EXISTS `personaldetails` (
+`id` int(11) NOT NULL,
+  `u_id` varchar(225) NOT NULL,
+  `b_date` date NOT NULL,
+  `phone` varchar(225) NOT NULL,
+  `fname` varchar(225) NOT NULL,
+  `lname` varchar(225) NOT NULL,
+  `email` varchar(225) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -129,6 +145,12 @@ ALTER TABLE `notes`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `personaldetails`
+--
+ALTER TABLE `personaldetails`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -152,12 +174,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `login_log`
 --
 ALTER TABLE `login_log`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `personaldetails`
+--
+ALTER TABLE `personaldetails`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

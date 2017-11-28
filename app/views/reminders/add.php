@@ -18,7 +18,13 @@
             </div>
         </div>
     </div>
-
+  <?php if (count($data['check123']) == 0){ ?>
+                           <div class="row">
+        <div class="col-lg-12">
+                  <center><h3> <p style="    color: red;">Please Update Youre Profile <a href="http://localhost/cosc.com/profile/index" class="btn btn-warning">Click Heare</a></p></h3></center>
+        </div>
+    </div>
+                        <?php  } else { ?>
     <div class="row">
         <div class="col-md-8">
             <div class="table">
@@ -38,7 +44,7 @@
         </div>
     </div>
 
-    
+						<?php } ?>
     <?php require_once '../app/views/templates/privatefooter.php' ?>
     <script type="text/javascript">
         // Delete modal

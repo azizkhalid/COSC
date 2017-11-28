@@ -6,6 +6,9 @@ class Reminders extends Controller {
     	$reminders = $this->model('Reminder')->fetch_all();
 		
         $this->view('reminders/index', ['reminders' => $reminders]);
+		
+
+		
     }
 
     public function delete() {
@@ -45,12 +48,20 @@ class Reminders extends Controller {
         return;
     }
 
-    public function add_new() {
-        $this->view('reminders/add');
-    }
+    public function add_new($name = '') {
+       // $this->view('reminders/add');
+
+
+		$check123 = $this->model('Reminder')->check123();
+		
+        $this->view('reminders/add', ['check123' => $check123]);
+		
+
+
+		}
 
     public function save() {
-        $msg = '';
+
         if (isset($_POST['submit'])){
             $reminder = $this->model('Reminder');
             if ($reminder->save($_POST['subject'], $_POST['description'])){

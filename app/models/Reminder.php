@@ -38,6 +38,17 @@ class Reminder {
         return $query->fetchAll();
     }
 
+	
+	  public function check123() {
+        $sql = "SELECT * FROM personaldetails WHERE u_id=?";
+
+        $query = $this->pdo->prepare($sql);
+        $query->execute(array($_SESSION['username']));
+        
+        return $query->fetchAll();
+    }
+	
+	
     public function delete($id) {
         $sql = "UPDATE $this->table_name SET deleted=? WHERE id=?";
         $query = $this->pdo->prepare($sql);
