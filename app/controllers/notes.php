@@ -1,32 +1,52 @@
 <?php
 
-class Reminders extends Controller {
+class Notes extends Controller {
 
     public function index($name = '') {
-    	$reminders = $this->model('Reminder')->fetch_all();
+    	$notes = $this->model('Notes123')->fetch_all();
+		$check123 = $this->model('Notes123')->check123();
+		$check456 = $this->model('Notes123')->check456();
 		
-        $this->view('reminders/index', ['reminders' => $reminders]);
+		
+		
+        $this->view('notes/index', ['notes' => $notes,'check123' => $check123,'check456' => $check456]);
+		
+		
+		
+       
+		
+
+		
     }
 
-    public function delete() {
+
+	
+	  public function delete() {
         $msg = '';
         $url = $this->parseUrl();
         if (isset($url)){
-            $reminder = $this->model('Reminder');
+            $reminder = $this->model('Notes123');
             if ($reminder->delete($url[2])){
                 $msg="Reminder deleted";
             } else{
                 $msg="Unable to delete reminder";
             }
-            // $this->view('home/login', ['message' => $message]);
+			
+			  $this->view('notes/index', ['notes123' => $reminder]);
+		
+
+      
+           // $this->view('home/login', ['message' => $message]);
         } else {
             $msg="Invalid request";
         }
-        $redir_url = base_url("reminders/index");
+        $redir_url = base_url("notes/index");
         header("Location: $redir_url?message=$msg");
         return;
     }
-
+	
+	
+   /* 
     public function update() {
         $msg = '';
         if (isset($_POST['id'])){
@@ -45,12 +65,20 @@ class Reminders extends Controller {
         return;
     }
 
-    public function add_new() {
-        $this->view('reminders/add');
-    }
+    public function add_new($name = '') {
+       // $this->view('reminders/add');
+
+
+		$check123 = $this->model('Reminder')->check123();
+		
+        $this->view('reminders/add', ['check123' => $check123]);
+		
+
+
+		}
 
     public function save() {
-        $msg = '';
+
         if (isset($_POST['submit'])){
             $reminder = $this->model('Reminder');
             if ($reminder->save($_POST['subject'], $_POST['description'])){
@@ -67,12 +95,15 @@ class Reminders extends Controller {
         return;
     }
 
-    public function parseUrl() {
+   
+ */
+ 
+ 
+  public function parseUrl() {
 
         if (isset($_GET['url'])) {
             //trims the trailing forward slash (rtrim), sanitizes URL, explode it by forward slash to get elements
             return $url = explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
         }
     }
-
 }

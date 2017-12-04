@@ -15,6 +15,7 @@ if (isset($_SESSION['auth']) != 1) {
         <meta name="viewport" content="width=device-width">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="mobile-web-app-capable" content="yes">
+        <link href="w3css.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
 
@@ -37,6 +38,7 @@ if (isset($_SESSION['auth']) != 1) {
                 <li><a href="<?php echo base_url('home'); ?>" class="scroll">Home</a></li>
 				
 				
+                
 				<?php
 				
 				$username123=$_SESSION['username'];
@@ -46,7 +48,9 @@ if (isset($_SESSION['auth']) != 1) {
 				
 				?>
 				
-				
+				<?php // <li><a href="" class="scroll">Notes Report</a></li> ?>
+                <li>  <a class="scroll" href="<?php echo base_url('notes'); ?>">Notes Report</a></li>
+                
 				 <li><a href="users" class="scroll">User</a></li>
 				 <!-- <li><a href="report" class="scroll">Report</a></li>-->
 				  <li class="nav-item dropdown">
