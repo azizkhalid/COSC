@@ -15,7 +15,6 @@ if (isset($_SESSION['auth']) != 1) {
         <meta name="viewport" content="width=device-width">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="mobile-web-app-capable" content="yes">
-        <link href="w3css.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
 
@@ -37,21 +36,33 @@ if (isset($_SESSION['auth']) != 1) {
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?php echo base_url('home'); ?>" class="scroll">Home</a></li>
 				
+				<li><a href="<?php echo base_url('notes/index'); ?>" class="scroll">Notes Report</a></li>
+		<?php
+		$con = mysqli_connect("localhost","root","","cosc");
+		$username123=$_SESSION['username'];
+		$sss=mysqli_query($con,"select * from users where username='$username123'");
+				$sssas=mysqli_fetch_array($sss);
+				 $ffff=$sssas['type'];
 				
-                
+				if($ffff=='Manager' or $ffff=='Staff')
+				{
+				?>
+				
+				
+				 <li><a href="users" class="scroll">Staff</a></li>
+				<?php } ?>
+				
+				
 				<?php
 				
 				$username123=$_SESSION['username'];
 				
 				if($username123=="admin")
-				{	
-				
+				{
+
 				?>
-				
-				<?php // <li><a href="" class="scroll">Notes Report</a></li> ?>
-                <li>  <a class="scroll" href="<?php echo base_url('notes'); ?>">Notes Report</a></li>
-                
-				 <li><a href="users" class="scroll">User</a></li>
+				<li><a href="users" class="scroll">User</a></li>
+				<li><a href="providers" class="scroll">Providers</a></li>
 				 <!-- <li><a href="report" class="scroll">Report</a></li>-->
 				  <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,7 +83,6 @@ if (isset($_SESSION['auth']) != 1) {
 				<?php  } ?> 
 				
 				
-		
                  <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Remainder <span class="caret"></span>
@@ -87,7 +97,7 @@ if (isset($_SESSION['auth']) != 1) {
       </li>
 	  
 	  
-	  
+	   
 	  
 	   <li><a href="<?php echo base_url('profile/index'); ?>" class="scroll"><i class="fa fa-user"></i> Profile</a></li>
                 

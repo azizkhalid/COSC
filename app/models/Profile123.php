@@ -40,7 +40,7 @@ class Profile123 {
     }
 
     
-  public function update($u_id, $b_date, $phone, $fname, $lname, $email) {
+  public function update($u_id, $b_date, $phone, $fname, $lname, $email, $province, $city) {
 		/* $sql = "SELECT * FROM $this->table_name WHERE u_id = ?";
 		 $query = $this->pdo->prepare($sql);
         $query->execute(array($u_id))
@@ -53,17 +53,17 @@ class Profile123 {
 
         return $query->rowCount();
 		}else{ */
-        $sql = "UPDATE $this->table_name SET b_date = ?, phone = ?,fname = ?, lname = ?, email = ? WHERE u_id = ?";
+        $sql = "UPDATE $this->table_name SET b_date = ?, phone = ?,fname = ?, lname = ?, email = ?, province= ?, city =? WHERE u_id = ?";
         $query = $this->pdo->prepare($sql);
-        $query->execute(array($b_date, $phone, $fname, $lname, $email, $u_id));        
+        $query->execute(array($b_date, $phone, $fname, $lname, $email, $province, $city, $u_id));        
         return $query->rowCount();
 		/* } */
     } 
 
-     public function save($u_id, $b_date, $phone, $fname, $lname, $email) {
-        $sql = "INSERT INTO $this->table_name(u_id, b_date, phone, fname, lname, email) VALUES (?, ?, ?, ?, ?, ?)";
+     public function save($u_id, $b_date, $phone, $fname, $lname, $email, $province, $city) {
+        $sql = "INSERT INTO $this->table_name(u_id, b_date, phone, fname, lname, email, province ,city) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $query = $this->pdo->prepare($sql);
-        $query->execute(array($u_id, $b_date, $phone, $fname, $lname, $email));
+        $query->execute(array($u_id, $b_date, $phone, $fname, $lname, $email, $province, $city));
 
         return $query->rowCount();
     } 

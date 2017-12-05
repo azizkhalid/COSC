@@ -13,7 +13,7 @@ if($status=="delete")
 	$ddfd=mysqli_query($con,"DELETE FROM `users` WHERE username='$useranme'");
 	if($ddfd)
 	{
-		echo "<script>location.href='http://localhost/cosc.com/users'</script>";
+		echo "<script>location.href='http://localhost/users'</script>";
 	}
 	
 }	

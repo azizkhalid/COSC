@@ -19,7 +19,6 @@
         </div>
     </div>
 
-
     <div class="row">
         <div class="col-lg-12">
             <p> <?php //$data['message']?> </p>
@@ -112,35 +111,8 @@ if( $value456['username']==$value['u_id'])
             </div>
         </div>
     </div>
-    
-    <div>
-    <h3 align="center" style="color:#900; border:2px solid #009; background:#FFCB32; margin-bottom:30px"><b>Data In Jason Format</b></h3>
-    <div align="right">
-    <form ction='index.php' method='post'>
-    <input type="submit" id="json_data" name="json_data" class="btn btn-primary" value="Export Data" />
-    </form>
-    </div>
-    <div align="center" >
-       <?php
-include('../app/controllers/api.php');
-?>
-<hr />
-<?php
-	if(isset($_POST['json_data']))
-	{
-	$filename=date("Y-m-d");
-$myFile = $filename.".txt";
-$fh = fopen($myFile, 'a+') or die("can't open file");
-$stringData = json_encode($jsondata);
-fwrite($fh, $stringData);
-fclose($fh);
-	}
- ?>  
-</div>
 
-    </div>
-  
-    
+   
   
     <?php require_once '../app/views/templates/privatefooter.php' ?>
    

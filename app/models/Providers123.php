@@ -1,6 +1,6 @@
 <?php
 
-class User123 {
+class Providers123 {
 
     public $subject;
     public $description;

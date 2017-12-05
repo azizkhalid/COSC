@@ -8,7 +8,7 @@ include('../app/controllers/Last_log.php');
 
 ?>
 
-<footer class="footer" style="background:#FFCB32; margin-top:50px">    
+<footer class="footer" style="background:#FFCB32">    
     <div class="row ">
     
         <div class="col-lg-12 w3-container " align="center"  style="height:55px">
@@ -27,6 +27,7 @@ include('../app/controllers/Last_log.php');
     </div>
 </footer>
 
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -36,3 +37,5 @@ $(document).ready(function(){
 	$('.tblReminders').DataTable();
 });
 </script>
+</body>
+</html>

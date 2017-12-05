@@ -66,7 +66,6 @@ class Reminder {
 
     public function save($subject, $description) {
         $sql = "INSERT INTO $this->table_name(subject, username, description, created_date, deleted) VALUES (?, ?, ?, ?, ?)";
-		//$date=date("Y-m-d");
         $query = $this->pdo->prepare($sql);
         $query->execute(array($subject, $_SESSION['username'], $description, time(), '0'));
 

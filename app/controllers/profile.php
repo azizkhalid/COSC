@@ -17,7 +17,7 @@ class Profile extends Controller {
         $msg = '';
         if (isset($_POST['u_id'])){
             $profile = $this->model('Profile123');
-            if ($profile->update($_POST['u_id'], $_POST['b_date'], $_POST['phone'], $_POST['fname'], $_POST['lname'], $_POST['email'])){
+            if ($profile->update($_POST['u_id'], $_POST['b_date'], $_POST['phone'], $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['province'], $_POST['city'])){
                 $msg="Profile updated";
             }else{
                 $msg="Unable to update Profile";
@@ -37,7 +37,7 @@ class Profile extends Controller {
         $msg = '';
         if (isset($_POST['u_id'])){
             $profile = $this->model('Profile123');
-            if ($profile->save($_POST['u_id'], $_POST['b_date'], $_POST['phone'], $_POST['fname'], $_POST['lname'], $_POST['email'])){
+            if ($profile->save($_POST['u_id'], $_POST['b_date'], $_POST['phone'], $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['province'], $_POST['city'])){
                 $msg="Profile updated";
             }else{
                 $msg="Unable to update Profile";

@@ -10,14 +10,41 @@ $status=$_GET['status'];
 if($status=="delete")
 {
 	 $useranme = $_GET['username'];
-	$ddfd=mysqli_query($con,"DELETE FROM `users` WHERE username='$useranme'");
+	$ddfd=mysqli_query($con,"DELETE FROM `province2` WHERE 	`city`='$useranme'");
 	if($ddfd)
 	{
-		echo "<script>location.href='http://localhost/users'</script>";
+		echo "<script>location.href='http://localhost/providers'</script>";
 	}
 	
 }	
 
+
+
+if(isset($_POST['submit']))
+{
+	$province=$_POST['province'];
+		
+	 $sql=mysqli_query($con,"INSERT INTO `province`(`name`) VALUES ('$province')");
+	 if($sql)
+	{
+		echo "<script>location.href='http://localhost/providers'</script>";
+	}
+
+}
+
+
+if(isset($_POST['submitnew']))
+{
+	$province=$_POST['province'];
+	$city=$_POST['city'];
+		
+	 $sql=mysqli_query($con,"INSERT INTO `province2`(`province`,`city`) VALUES ('$province','$city')");
+	 if($sql)
+	{
+		echo "<script>location.href='http://localhost/providers'</script>";
+	}
+
+}
 
 ?>
 
@@ -27,8 +54,8 @@ if($status=="delete")
         <div class="row">
             <br>
             <div class="col-lg-12">
-                <h3>User Reports For Login</h3>
-                <p class="lead"> List of all User </p>
+                <h3>New Province</h3>
+                <p class="lead">  </p>
                 <ul>
                     <?php if (isset($_GET['message'])) { ?>
                         <li><?php echo $_GET['message']; ?></li>
@@ -49,12 +76,8 @@ if($status=="delete")
             <div class="table">
                 <form action="" method="post">
                   <div class="form-group">
-                    <label for="recipient-name" class="control-label">Start Date</label>
-                    <input type="date" class="form-control" id="recipient-name" value="<?php echo $_POST['start']; ?>" name="start" data-subject>
-                  </div>
-                  <div class="form-group">
-                    <label for="message-text" class="control-label">End Date</label>
-                   <input type="date" class="form-control" id="recipient-name" name="end"  value="<?php echo $_POST['end']; ?>" data-subject>
+                    <label for="recipient-name" class="control-label">Add New Province</label>
+                    <input type="text" class="form-control" value="" name="province" data-subject>
                   </div>
                   <input type="submit" name="submit" class="btn btn-info">
                   <input type="reset" value="Reset" class="btn btn-warning">            
@@ -65,6 +88,60 @@ if($status=="delete")
 
 	
 	
+	    <div class="page-header" id="banner">
+        <div class="row">
+         
+            <div class="col-lg-12">
+                <h3>Add New Province City</h3>
+                <p class="lead">  </p>
+                <ul>
+                    <?php if (isset($_GET['message'])) { ?>
+                        <li><?php echo $_GET['message']; ?></li>
+                    <?php } ?>
+                    <?php if (isset($message)) { ?>
+                        <li><?php echo $message; ?></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+	    <div class="row">
+        <div class="col-md-8">
+            <div class="table">
+                <form action="" method="post">
+                  <div class="form-group">
+                    <label for="recipient-name" class="control-label">Select Province</label>
+ <select name="province" class="form-control" >
+					 <option value=""> -- Select Province -- </option>
+				
+<?php 
+
+$dffff=mysqli_query($con,"select * from province");
+while($ddddx=mysqli_fetch_array($dffff))
+{
+?>
+				
+					 
+					  <option value="<?php echo $ddddx['name']; ?>"> <?php echo $ddddx['name']; ?></option>
+<?php } ?>
+					</select>
+					
+
+
+				 </div>
+				  
+				   <div class="form-group">
+                    <label for="recipient-name" class="control-label">Enter Province Cities</label>
+                    <input type="text" class="form-control" value="" name="city" data-subject>
+                  </div>
+				  
+                  <input type="submit" name="submitnew" class="btn btn-info">
+                  <input type="reset" value="Reset" class="btn btn-warning">            
+                </form>
+            </div>
+        </div>
+    </div>
+	
     <div class="row">
         <div class="col-lg-12">
             <p> <?php //$data['message']?> </p>
@@ -74,59 +151,35 @@ if($status=="delete")
                         <tr>
                             <th>Username</th>
                             <th>Total Login</th>
-                            
+                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
 
+$sql="select * from province2";
 
-	$con = mysqli_connect("localhost","root","","cosc");
-if(isset($_POST['submit']))
-{
-	$start=$_POST['start'];
-		$end=$_POST['end'];					
-	 $sql="SELECT  DISTINCT `username`  FROM `login_log` WHERE `date` BETWEEN '$start' AND '$end'";
-
-}		
-else{
-	$sql="select DISTINCT `username` from login_log";
-
-}					$query=mysqli_query($con,$sql);
+					$query=mysqli_query($con,$sql);
 							
 $row12=mysqli_num_rows($query);
 							if($row12 == 0) { ?>
-                            <tr><td colspan="3">No User to In List</td></tr>
+                            <tr><td colspan="3">No Province and their Cities In List</td></tr>
                         <?php  } else {
 
 						
 						while($row=mysqli_fetch_array($query))
 						{
-							$ddfdfdf=$row['username'];
-							$start=$_POST['start'];
-		$end=$_POST['end'];
-		if($start=='' and $end=='')
-		{
-							$sdsdsds=mysqli_query($con,"select * from login_log where username='$ddfdfdf'");
-		}
-else{
-	$sdsdsds=mysqli_query($con,"select * from login_log where username='$ddfdfdf' and `date` BETWEEN '$start' AND '$end'");
-}		
-		$sdssd=mysqli_num_rows($sdsdsds);
-							if($ddfdfdf!='admin')
-							{
+							$ddfdfdf=$row['province'];
+							$start=$row['city'];
+	
 						?>
-                         
-                                <tr class="data-row">
-                                    <td ><?php echo $row['username']; ?></td>
-                                    <td ><?php echo $sdssd; ?> Times</td>
-                                  
+ <tr class="data-row">
+                                    <td ><?php echo $ddfdfdf; ?></td>
+                                    <td ><?php echo $start; ?></td>
+                                   <td ><a href="?status=delete&username=<?php echo $start; ?>" class="btn btn-danger">Delete</a></td>
                                 </tr>
-								
-								
-								
-							
-							<?php } } } ?>   
+		
+						<?php  } } ?>   
                    
                     </tbody>
                 </table>

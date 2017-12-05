@@ -1,4 +1,5 @@
 <?php require_once '../app/views/templates/header.php' ?>
+
 <div class="container">
     <div class="page-header" id="banner">
         <div class="row">
@@ -14,12 +15,7 @@
                     <?php } ?>
                 </ul>
             </div>
-           
         </div>
-    </div>
-    <div>
- 
-   
     </div>
 <?php
 
